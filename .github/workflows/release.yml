@@ -13,7 +13,7 @@ jobs:
       - run: |
           npm install -g node-red-nodegen
           node-red-nodegen flows.json --tgz
-          cd node-red-contrib-*/
+          cd enebular-privatenode-contrib-*/
           cat package.json | jq ".repository.type|=\"git\"|.repository.url|=\"https://github.com/$GITHUB_REPOSITORY.git\"" > tmp; mv tmp package.json
           cat package.json | jq ".bugs.url|=\"https://github.com/$GITHUB_ACTOR\"" > tmp; mv tmp package.json
           mv ../examples . || true
@@ -24,4 +24,4 @@ jobs:
       - uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: node-red-contrib-*.tgz
+          files: enebular-privatenode-contrib-*.tgz
